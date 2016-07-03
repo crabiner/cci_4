@@ -15,8 +15,10 @@ int main()
 {
 	BinaryTree bt;
 	bt.createTree1();
-//	bt.inOrder();
-//	std::cout <<  bt.root.node << "fdfd\n";
+	bt.printInOrder();
+	std::cout <<  "fdfd\n";
+	bt.printPreOrder();
+	std::cout <<  "fdfd\n";
 
 	return 0;
 }
