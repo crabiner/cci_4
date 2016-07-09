@@ -16,10 +16,10 @@ void binaryTreeTest()
 	BinaryTree bt;
 	bt.createTree1();
 	bt.printInOrder();
-	std::cout <<  "fdfd\n";
+	std::cout <<  "printPreOrder ";
 	bt.printPreOrder();
-	std::cout <<  "fdfd\n";
-
+	std::cout <<  "sortedArrayToMinimalHeightBinarySearchTree " <<endl;
+	bt.sortedArrayToMinimalHeightBinarySearchTree();
 }
 //
 //

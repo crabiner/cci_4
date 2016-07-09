@@ -13,18 +13,25 @@
 #include <string>
 using namespace std;
 
-class Node{
+class TreeNode{
 public:
 	int data;
-	Node *left;
-	Node *right;
+	TreeNode *left;
+	TreeNode *right;
 
-	Node(int data):left(0),right(0)
+	TreeNode():
+		data(0),
+		left(nullptr),
+		right(nullptr)
+	{
+	}
+
+	TreeNode(int data):left(nullptr),right(nullptr)
 	{
 		this->data = data;
 	}
 
-	Node(int data, Node * lNode, Node * rNode)
+	TreeNode(int data, TreeNode * lNode, TreeNode * rNode)
 	{
 		this->data = data;
 		this->left = lNode;
@@ -34,51 +41,20 @@ public:
 };
 
 class BinaryTree {
+	void inOrderTreeTraversal(TreeNode * node);
+	void preOrderTreeTraversal(TreeNode * node);
+	TreeNode * m_pRoot;
+	TreeNode * ReturnMinimalHeightBinarySearchTree(int sortedArray[], int start, int end);
+
 public:
 	BinaryTree(){};
 	~BinaryTree(){
 			delete this->m_pRoot;
 	};
-
-	void createTree1()
-	{
-		this->m_pRoot = new Node(5, new Node(3), new Node (7));
-	};
-
-	void printInOrder()
-	{
-		inOrder(this->m_pRoot);
-	}
-
-	void printPreOrder()
-	{
-		preOrder(this->m_pRoot);
-	}
-
-
-
-
-private:
-	void inOrder(Node * node)
-	{
-		if (node)
-		{
-			inOrder(node->left);
-			std::cout << " " << node->data <<" " <<endl ;
-			inOrder(node->right);
-		}
-	};
-
-	void preOrder(Node * node)
-	{
-		if (node)
-		{
-			std::cout << " " << node->data <<" " <<endl ;
-			inOrder(node->left);
-			inOrder(node->right);
-		}
-	};
-	Node * m_pRoot;
+	void createTree1();
+	void printInOrder();
+	void printPreOrder();
+	void sortedArrayToMinimalHeightBinarySearchTree();
 };
 
 #endif /* BINARYTREE_H_ */

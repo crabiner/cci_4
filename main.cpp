@@ -15,8 +15,8 @@ void graphTest();
 
 int main()
 {
-	//binaryTreeTest();
-	graphTest();
+	binaryTreeTest();
+//	graphTest();
 
 	return 0;
 }
