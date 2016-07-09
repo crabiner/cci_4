@@ -5,13 +5,13 @@
  *      Author: chen
  */
 
+//#include <string>
 using namespace std;
 
 #include <iostream>
 #include "BinaryTree.h"
-//#include <string>
 
-int main()
+void binaryTreeTest()
 {
 	BinaryTree bt;
 	bt.createTree1();
@@ -20,7 +20,6 @@ int main()
 	bt.printPreOrder();
 	std::cout <<  "fdfd\n";
 
-	return 0;
 }
 //
 //
