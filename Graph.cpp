@@ -27,9 +27,9 @@ void Graph::addEdge(int nodeId, int adjacentNodeId)
 {
 	nodes[nodeId].push_back(adjacentNodeId);
 }
-// 	  0 - 1 - 2 - 3
-// 		 /   /
-// 		4 - 5 - 6 - 7
+// 	  0 - 1 - 2 - 3       9
+// 		 /   /			 /
+// 		4 - 5 - 6 - 7   8
 void Graph::createGraph()
 {
 	addEdge(0, 1);
@@ -40,6 +40,8 @@ void Graph::createGraph()
 	addEdge(5, 4);	addEdge(5, 2);	addEdge(5, 6);
 	addEdge(6, 7);	addEdge(6, 5);
 	addEdge(7, 6);
+	addEdge(8, 9);
+	addEdge(9, 8);
 }
 
 void Graph::toString()
@@ -120,6 +122,42 @@ void Graph::bfs(int startVertice)
 		}
 	}
 	cout << " done " <<endl;
+}
+
+bool Graph::search(int start, int end)
+{
+	if (start == end)
+		return true;
+
+	bool visited[num_of_vertices];
+	for (int i = 0; i < num_of_vertices; i++)
+		visited[i] = false;
+
+	//list as queue
+	list<int> q;
+
+	q.push_back(start);
+
+	while (!q.empty())
+	{
+		int v = q.front();
+		q.pop_front();
+
+		cout << " "<<v;
+		visited[v] = true;
+		if (v == end)
+			return true;
+
+		for (auto &it: nodes[v])
+		{
+			if (visited[it] == false)
+			{
+				q.push_back(it);
+			}
+		}
+	}
+
+	return false;
 }
 
 } /* namespace std */

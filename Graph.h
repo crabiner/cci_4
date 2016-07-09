@@ -15,8 +15,7 @@
 namespace std {
 class Node {
 public:
-	list<int> adjacentList;
-	bool visited;
+	int data;
 };
 
 class Graph {
@@ -33,6 +32,7 @@ public:
 	void toString();
 	void dfs(int startVertice);
 	void bfs(int startVertice);
+	bool search(int nodeStart, int nodeEnd);
 };
 
 } /* namespace std */
