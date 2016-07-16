@@ -19,7 +19,7 @@ void binaryTreeTest()
 	std::cout <<  "printPreOrder ";
 	bt.printPreOrder();
 	std::cout <<  "sortedArrayToMinimalHeightBinarySearchTree " <<endl;
-	bt.sortedArrayToMinimalHeightBinarySearchTree();
+	bt.sortedArrayToMinimalHeightBST();
 }
 //
 //

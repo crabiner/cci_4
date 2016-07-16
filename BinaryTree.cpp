@@ -51,8 +51,8 @@ TreeNode * BinaryTree::ReturnMinimalHeightBST(int sortedArray[], int start, int 
 
 	int middle = (start + end)/2;
 	result->data = sortedArray[middle];
-	result->left = ReturnMinimalHeightBinarySearchTree(sortedArray, start , middle - 1);
-	result->right = ReturnMinimalHeightBinarySearchTree(sortedArray, middle + 1, end);
+	result->left = ReturnMinimalHeightBST(sortedArray, start , middle - 1);
+	result->right = ReturnMinimalHeightBST(sortedArray, middle + 1, end);
 
 	return result;
 }
@@ -60,6 +60,6 @@ TreeNode * BinaryTree::ReturnMinimalHeightBST(int sortedArray[], int start, int 
 void BinaryTree::sortedArrayToMinimalHeightBST()
 {
 	int sortedArray[] = {1,2,3,4,5,6,7};
-	preOrderTreeTraversal(ReturnMinimalHeightBinarySearchTree(sortedArray, 0, sizeof(sortedArray)/sizeof(int)));
+	preOrderTreeTraversal(ReturnMinimalHeightBST(sortedArray, 0, sizeof(sortedArray)/sizeof(int)));
 }
 

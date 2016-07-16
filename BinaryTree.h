@@ -44,7 +44,7 @@ class BinaryTree {
 	void inOrderTreeTraversal(TreeNode * node);
 	void preOrderTreeTraversal(TreeNode * node);
 	TreeNode * m_pRoot;
-	TreeNode * ReturnMinimalHeightBinarySearchTree(int sortedArray[], int start, int end);
+	TreeNode * ReturnMinimalHeightBST(int sortedArray[], int start, int end);
 
 public:
 	BinaryTree(){};
@@ -54,7 +54,7 @@ public:
 	void createTree1();
 	void printInOrder();
 	void printPreOrder();
-	void sortedArrayToMinimalHeightBinarySearchTree();
+	void sortedArrayToMinimalHeightBST();
 };
 
 #endif /* BINARYTREE_H_ */
