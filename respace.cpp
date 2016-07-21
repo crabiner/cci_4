@@ -19,8 +19,8 @@ struct parseResult
 	int invalid;
 };
 
-
-parseResult split(unordered_set<string> dictionary,string sentence, unsigned int start)
+static int recursions=0;
+parseResult split(unordered_set<string> dictionary,string sentence, unsigned int start, parseResult memo[])
 {
 	parseResult result;
 	result.parsed = "";
@@ -28,18 +28,23 @@ parseResult split(unordered_set<string> dictionary,string sentence, unsigned int
 	cout << "start="<< start <<endl;
 	if (start > sentence.length())
 		return result;
+
+	if (!(memo[start].parsed == ""))
+		return memo[start];
 	unsigned int index = start;
 	unsigned int bestInvalid = 0xffffffff;
-
+	string bestParsing;
+	string partial;
+	recursions++;
 	while (index < sentence.length())
 	{
-		string partial;
-		int invalid=0;
+		unsigned int invalid=0;
 		partial += sentence.at(index);
+//		cout << "partial="<< partial <<endl;
 		if (dictionary.find(partial) == dictionary.end())
 		{
-			invalid++;
-			cout << "invalid="<< invalid <<endl;
+			invalid = partial.length();
+//			cout << "invalid="<< invalid << " start="<< start <<endl;
 		}
 		else
 		{
@@ -49,24 +54,38 @@ parseResult split(unordered_set<string> dictionary,string sentence, unsigned int
 
 		if (invalid < bestInvalid) // only if this is true we should go on on this path
 		{
-			cout << "partial="<< partial <<endl;
 
 			parseResult recurse_result;
-			recurse_result = split(dictionary, sentence, start+1);
-			if (recurse_result.invalid < bestInvalid)
+			recurse_result = split(dictionary, sentence, index+1, memo);
+
+			if ((invalid + recurse_result.invalid) < bestInvalid)
 			{
-				bestInvalid = recurse_result.invalid ;
+				bestInvalid = invalid + recurse_result.invalid ;
+				bestParsing = partial + " " + recurse_result.parsed;
+				cout << "bestInvalid="<< bestInvalid << " parsed="<< bestParsing <<endl;
+				if(bestInvalid == 0) break;
 			}
 		}
 		index++;
 	}
-	return result;
+	memo[start].parsed = bestParsing;
+	memo[start].invalid = bestInvalid;
+	return memo[start];
 }
 
 void bestSplit(unordered_set<string> dictionary,string sentence)
 {
+	parseResult res;
+	parseResult * memo = new parseResult[sentence.length()];
+	for (unsigned int i=0; i< sentence.length(); i++)
+	{
+		memo[i].parsed = "";
+		cout << "memo[i].parsed ="<< memo[i].parsed  <<endl;
+	}
+//	cout << "memo=" << memo[0];
 	cout << "sentence.length()="<< sentence.length() <<endl;
-	split(dictionary, sentence, 0);
+	res = split(dictionary, sentence, 0, memo);
+	cout << "recursions="<<recursions<<" result invalid="<< res.invalid <<endl << "result parsed="<< res.parsed <<endl;
 }
 
 void bestSplitTest()
