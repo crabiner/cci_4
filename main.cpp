@@ -15,7 +15,7 @@ void graphTest();
 void findWordInBook(string book, string word);
 void iterateAllBoardLengths();
 void robotWalk();
-
+void bestSplitTest();
 int main()
 {
 //	binaryTreeTest();
@@ -29,7 +29,8 @@ int main()
 //			"So, the greedy dog looked at his reflection and growled. The reflection growled back, too. This made the dog angry. He looked down at his reflection and barked, “Woof! Woof! As he opened his mouth, the bone in his mouth fell into the river. It was only when the water splashed that the greedy dog realized that what he had seen was nothing but his own reflections and not another dog. But it was too late. He had lost the piece of bone because of his greed. Now he had to go hungry. ", "dog");
 
 //	iterateAllBoardLengths();
-	robotWalk();
+//	robotWalk();
+	bestSplitTest();
 	return 0;
 }
 
