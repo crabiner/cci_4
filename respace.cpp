@@ -25,9 +25,9 @@ parseResult split(unordered_set<string> dictionary,string sentence, unsigned int
 	parseResult result;
 	result.parsed = "";
 	result.invalid = 0;
-	cout << "start="<< start <<endl;
-	if (start > sentence.length())
+	if (start >= sentence.length())
 		return result;
+
 
 	if (!(memo[start].parsed == ""))
 		return memo[start];
@@ -40,7 +40,6 @@ parseResult split(unordered_set<string> dictionary,string sentence, unsigned int
 	{
 		unsigned int invalid=0;
 		partial += sentence.at(index);
-//		cout << "partial="<< partial <<endl;
 		if (dictionary.find(partial) == dictionary.end())
 		{
 			invalid = partial.length();
@@ -51,6 +50,7 @@ parseResult split(unordered_set<string> dictionary,string sentence, unsigned int
 			//found partial in dictionary
 			invalid = 0;
 		}
+		cout << "start="<< start << " len="<<sentence.length() << " partial="<< partial  << " invalid=" << invalid<<endl;
 
 		if (invalid < bestInvalid) // only if this is true we should go on on this path
 		{
@@ -62,12 +62,12 @@ parseResult split(unordered_set<string> dictionary,string sentence, unsigned int
 			{
 				bestInvalid = invalid + recurse_result.invalid ;
 				bestParsing = partial + " " + recurse_result.parsed;
-				cout << "bestInvalid="<< bestInvalid << " parsed="<< bestParsing <<endl;
+				cout <<"start="<< (index+1) << " bestInvalid="<< bestInvalid << " bestParsed="<< bestParsing <<endl;
 				if(bestInvalid == 0) break;
 			}
 		}
 		index++;
-	}
+	}//while (index < sentence.length()
 	memo[start].parsed = bestParsing;
 	memo[start].invalid = bestInvalid;
 	return memo[start];
@@ -82,7 +82,6 @@ void bestSplit(unordered_set<string> dictionary,string sentence)
 		memo[i].parsed = "";
 		cout << "memo[i].parsed ="<< memo[i].parsed  <<endl;
 	}
-//	cout << "memo=" << memo[0];
 	cout << "sentence.length()="<< sentence.length() <<endl;
 	res = split(dictionary, sentence, 0, memo);
 	cout << "recursions="<<recursions<<" result invalid="<< res.invalid <<endl << "result parsed="<< res.parsed <<endl;
@@ -90,7 +89,8 @@ void bestSplit(unordered_set<string> dictionary,string sentence)
 
 void bestSplitTest()
 {
-	unordered_set<string> dictionary={"hello","world"};
-	string sentence="helloworld";
+	unordered_set<string> dictionary={"hello","world","strange","he","hell","range"};
+
+	string sentence="hellostrangeworld";
 	bestSplit(dictionary, sentence);
 }
