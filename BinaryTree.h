@@ -41,20 +41,28 @@ public:
 };
 
 class BinaryTree {
-	void inOrderTreeTraversal(TreeNode * node);
-	void preOrderTreeTraversal(TreeNode * node);
 	TreeNode * m_pRoot;
-	TreeNode * ReturnMinimalHeightBST(int sortedArray[], int start, int end);
+	int numNodes;
+
+	void inOrderTreeTraversal(TreeNode * node);
+	void inOrderTreeTraversalToArray(TreeNode * node, int arr[], int &index);
+	void preOrderTreeTraversal(TreeNode * node);
+	TreeNode * ReturnMinimalHeightBSTRecursive(int sortedArray[], int start, int end);
+	void sortedArrayToMinimalHeightBST(int arr[], int size);
+	bool isBinarySearchTree(TreeNode * root, int low, int high);
 
 public:
-	BinaryTree(){};
+	BinaryTree():numNodes(0){};
+	BinaryTree(int arr[], int size):numNodes(0){
+		sortedArrayToMinimalHeightBST(arr, size);
+	};
 	~BinaryTree(){
 			delete this->m_pRoot;
 	};
 	void createTree1();
 	void printInOrder();
 	void printPreOrder();
-	void sortedArrayToMinimalHeightBST();
+	void checkIfBST();
 };
 
 #endif /* BINARYTREE_H_ */

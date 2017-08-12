@@ -9,6 +9,7 @@
 using namespace std;
 
 #include <iostream>
+#include "biDirSearch.h"
 
 void binaryTreeTest();
 void graphTest();
@@ -18,6 +19,7 @@ void robotWalk();
 void bestSplitTest();
 int main()
 {
+	Graph::main();
 //	binaryTreeTest();
 //	graphTest();
 //	findWordInBook("This Short Story The Greedy Dog is quite interesting to all the people. Enjoy reading this story. "
@@ -30,7 +32,7 @@ int main()
 
 //	iterateAllBoardLengths();
 //	robotWalk();
-	bestSplitTest();
+//	bestSplitTest();
 	return 0;
 }
 

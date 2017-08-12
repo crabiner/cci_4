@@ -18,6 +18,17 @@ void BinaryTree::inOrderTreeTraversal(TreeNode * node)
 	}
 };
 
+void BinaryTree::inOrderTreeTraversalToArray(TreeNode * node, int arr[], int &index)
+{
+	if (node)
+	{
+		inOrderTreeTraversalToArray(node->left, arr, index);
+		index++;
+		arr[index] = node->data ;
+		inOrderTreeTraversalToArray(node->right, arr, index);
+	}
+};
+
 void BinaryTree::preOrderTreeTraversal(TreeNode * node)
 {
 	if (node)
@@ -43,7 +54,7 @@ void BinaryTree::printPreOrder()
 	preOrderTreeTraversal(this->m_pRoot);
 }
 
-TreeNode * BinaryTree::ReturnMinimalHeightBST(int sortedArray[], int start, int end)
+TreeNode * BinaryTree::ReturnMinimalHeightBSTRecursive(int sortedArray[], int start, int end)
 {
 	TreeNode * result = new TreeNode;
 	if (end < start)
@@ -51,15 +62,35 @@ TreeNode * BinaryTree::ReturnMinimalHeightBST(int sortedArray[], int start, int 
 
 	int middle = (start + end)/2;
 	result->data = sortedArray[middle];
-	result->left = ReturnMinimalHeightBST(sortedArray, start , middle - 1);
-	result->right = ReturnMinimalHeightBST(sortedArray, middle + 1, end);
+	result->left = ReturnMinimalHeightBSTRecursive(sortedArray, start , middle - 1);
+	result->right = ReturnMinimalHeightBSTRecursive(sortedArray, middle + 1, end);
 
 	return result;
 }
 
-void BinaryTree::sortedArrayToMinimalHeightBST()
+void BinaryTree::sortedArrayToMinimalHeightBST(int sortedArray[], int size)
 {
-	int sortedArray[] = {1,2,3,4,5,6,7};
-	preOrderTreeTraversal(ReturnMinimalHeightBST(sortedArray, 0, sizeof(sortedArray)/sizeof(int)));
+	m_pRoot = ReturnMinimalHeightBSTRecursive(sortedArray, 0, size-1);
+	numNodes = size;
+	inOrderTreeTraversal(m_pRoot);
+}
+
+bool BinaryTree::isBinarySearchTree(TreeNode * root, int low, int high) {
+	if(root == NULL) {
+		return true;
+	}
+	if(root->data <= low || root->data >= high) {
+		return false;
+	}
+	return isBinarySearchTree(root->left, low, root->data) &&
+		   isBinarySearchTree(root->right, root->data, high);
+}
+
+void BinaryTree::checkIfBST()
+{
+	if (isBinarySearchTree(m_pRoot, 0, 0xfffffff))
+		cout << "is BST" <<endl;
+	else
+		cout << "is not BST" <<endl;
 }
 
