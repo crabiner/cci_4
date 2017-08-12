@@ -14,6 +14,16 @@ environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.16487
 environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.1648743317/PATH/value=${MINGW_HOME}\\bin;${MSYS_HOME}\\bin;${Path};c\:\\mingw;C\:\\MinGW\\bin\\
 environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.1648743317/append=true
 environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.1648743317/appendContributed=true
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.329698226/PATH/delimiter=;
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.329698226/PATH/operation=replace
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.329698226/PATH/value=${MINGW_HOME}\\bin;${MSYS_HOME}\\bin;${Path};c\:\\mingw;C\:\\MinGW\\bin\\
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.329698226/append=true
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.329698226/appendContributed=true
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.670394067/PATH/delimiter=;
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.670394067/PATH/operation=replace
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.670394067/PATH/value=${MINGW_HOME}\\bin;${MSYS_HOME}\\bin;${Path};c\:\\mingw;C\:\\MinGW\\bin\\
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.670394067/append=true
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540.670394067/appendContributed=true
 environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540/PATH/delimiter=;
 environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540/PATH/operation=replace
 environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1776754540/PATH/value=${MINGW_HOME}\\bin;${MSYS_HOME}\\bin;${Path};c\:\\mingw;C\:\\MinGW\\bin\\
